@@ -33,11 +33,23 @@ FEISHU_APP_SECRET=你的应用密钥
 FEISHU_BOT_OPEN_ID=ou_xxx
 ```
 
+可先复制模板文件再填写：
+
+```bash
+cp .env.example .env
+```
+
 ## 飞书后台配置
 
 ### 1) 开启能力
 
 - 开启机器人能力并发布版本
+
+### 1.1) 机器人名称建议
+
+- 建议将机器人名称设置为：`共同空闲时间查询`
+- 原因：项目默认按该名称在被 @ 成员中识别并排除机器人自身
+- 若你使用其他名称，请同步修改 [main.py](main.py) 中的 `BOT_DISPLAY_NAME`
 
 ### 2) 订阅事件
 
@@ -46,12 +58,38 @@ FEISHU_BOT_OPEN_ID=ou_xxx
 - 订阅：`im.chat.member.bot.added_v1`（机器人进群）
 - 推荐使用：长连接方式接收事件
 
-### 3) 权限（至少包含）
+### 3) 权限（通过 JSON 批量导入）
 
-- 消息接收：`im:message.group_at_msg:readonly`（群内 @ 机器人）
-- 消息发送：`im:message:send_as_bot` 或 `im:message`
-- 消息表情回复：`im:message.reactions:write_only`
-- 日历忙闲读取：`calendar:calendar.free_busy:read`
+- 导入位置：应用配置 -> 开发配置 -> 权限管理 -> 批量导入/导出权限 -> 导入
+- 导入以下 JSON：
+
+```json
+{
+	"scopes": {
+		"tenant": [
+			"calendar:calendar",
+			"calendar:calendar.free_busy:read",
+			"calendar:calendar:readonly",
+			"contact:user.employee_id:readonly",
+			"im:chat:readonly",
+			"im:message",
+			"im:message.group_at_msg:readonly",
+			"im:message.group_msg",
+			"im:message.p2p_msg:readonly",
+			"im:message.reactions:write_only",
+			"im:message:recall",
+			"im:message:send_as_bot"
+		],
+		"user": [
+			"calendar:calendar",
+			"calendar:calendar.free_busy:read",
+			"calendar:calendar:readonly",
+			"contact:user.employee_id:readonly",
+			"im:message"
+		]
+	}
+}
+```
 
 ## 运行
 
