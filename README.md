@@ -65,29 +65,28 @@ cp .env.example .env
 
 ```json
 {
-	"scopes": {
-		"tenant": [
-			"calendar:calendar",
-			"calendar:calendar.free_busy:read",
-			"calendar:calendar:readonly",
-			"contact:user.employee_id:readonly",
-			"im:chat:readonly",
-			"im:message",
-			"im:message.group_at_msg:readonly",
-			"im:message.group_msg",
-			"im:message.p2p_msg:readonly",
-			"im:message.reactions:write_only",
-			"im:message:recall",
-			"im:message:send_as_bot"
-		],
-		"user": [
-			"calendar:calendar",
-			"calendar:calendar.free_busy:read",
-			"calendar:calendar:readonly",
-			"contact:user.employee_id:readonly",
-			"im:message"
-		]
-	}
+  "scopes": {
+    "tenant": [
+      "calendar:calendar",
+      "calendar:calendar.free_busy:read",
+      "calendar:calendar:readonly",
+      "contact:user.employee_id:readonly",
+      "im:chat:readonly",
+      "im:message",
+      "im:message.group_at_msg:readonly",
+      "im:message.p2p_msg:readonly",
+      "im:message.reactions:write_only",
+      "im:message:recall",
+      "im:message:send_as_bot"
+    ],
+    "user": [
+      "calendar:calendar",
+      "calendar:calendar.free_busy:read",
+      "calendar:calendar:readonly",
+      "contact:user.employee_id:readonly",
+      "im:message"
+    ]
+  }
 }
 ```
 
